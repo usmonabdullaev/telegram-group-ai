@@ -1,0 +1,39 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+model User {
+    id         String    @id @default(uuid())
+    telegramId BigInt    @unique
+    username   String?
+    firstName  String?
+    createdAt  DateTime  @default(now())
+    messages   Message[]
+}
+
+model Chat {
+    id             String    @id @default(uuid())
+    telegramChatId BigInt    @unique
+    title          String?
+    createdAt      DateTime  @default(now())
+    messages       Message[]
+}
+
+model Message {
+    id                String   @id @default(uuid())
+    telegramMessageId BigInt
+    text              String?
+    isBot             Boolean  @default(false)
+    userId            String?
+    chatId            String
+    createdAt         DateTime @default(now())
+
+    user User? @relation(fields: [userId], references: [id])
+    chat Chat  @relation(fields: [chatId], references: [id])
+
+    @@index([chatId, createdAt])
+}
