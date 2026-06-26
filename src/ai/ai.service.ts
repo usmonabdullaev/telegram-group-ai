@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Injectable } from '@nestjs/common';
 import { createXai } from '@ai-sdk/xai';
@@ -39,11 +39,7 @@ export class AiService {
 
       return text;
     } catch (error) {
-      return (
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        (error as any)?.message ||
-        'Ошибка в серверах Грока, Грок временно не сможет отвечат.'
-      );
+      return 'Грок отдыхает';
     }
   }
 

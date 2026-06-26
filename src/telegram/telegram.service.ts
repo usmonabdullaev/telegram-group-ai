@@ -14,7 +14,7 @@ import { AiService } from '@/ai/ai.service';
 import 'dotenv/config';
 
 const TRIGGER_WORDS = ['Грок', 'Grok', 'грок', 'grok'];
-const HISTORY_SIZE = 10;
+const HISTORY_SIZE = 3;
 
 @Injectable()
 export class TelegramService implements OnModuleInit, OnModuleDestroy {
