@@ -39,11 +39,7 @@ export class AiService {
 
       return text;
     } catch (error) {
-      return (
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        (error as any)?.message ||
-        'Ошибка в серверах Грока, Грок временно не сможет отвечат.'
-      );
+      return 'Грок отдыхает. (Или лимит или очень много запросов)';
     }
   }
 
