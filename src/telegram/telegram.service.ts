@@ -66,7 +66,10 @@ export class TelegramService implements OnModuleInit, OnModuleDestroy {
       const cleanedText = this.stripTrigger(text);
 
       const history = await this.buildHistory(chat.id);
-      history.push({ role: 'user', content: cleanedText });
+      history.push({
+        role: 'user',
+        content: `${user.username || 'user'}: ${cleanedText}`,
+      });
 
       const replyText = await this.ai.generateReply(history);
 
